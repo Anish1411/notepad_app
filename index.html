@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Notepad App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body ng-app="notepadApp">
+    <h1>Notepad App</h1>
+    <div ng-controller="NotepadController as notepadCtrl">
+        <form>
+            <textarea ng-model="notepadCtrl.note"></textarea>
+        </form>
+        <div class="button-group">
+            <button ng-click="notepadCtrl.save()">Save</button>
+            <button ng-click="notepadCtrl.clear()">Clear</button>
+        </div>
+        <div class="saved-notes">
+            <h2>Saved Notes</h2>
+            <ul>
+                <li ng-repeat="note in notepadCtrl.notes" ng-click="notepadCtrl.load(note)">
+                    {{note.title}}
+                    <button ng-click="notepadCtrl.delete(note)">Delete</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
